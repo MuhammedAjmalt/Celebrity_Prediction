@@ -1,0 +1,44 @@
+MODEL SUMMARY
+	The chosen model for image classification is the Convolutional Neural Network (CNN), widely applied in tasks such as image identification, medical image processing, time series forecasting, and anomaly detection.
+
+1. Convolution Layers:
+   a. Fundamental building blocks.
+   b. Requires input data, filter, and a feature map.
+   c. Involves a feature detector (kernel/filter) moving across the image's receptive field, conducting    convolution. The filter is applied to image areas, and the dot product is calculated. The filter shifts by a stride, repeating the process until it covers the entire image.
+
+2. Activation Functions
+
+3. Pooling Layers:
+   - Also known as down sampling, it reduces input parameters without weights.
+   - Two main types:
+     1. Maxpooling: Selects the maximum pixel value for the output array.
+     2. Average pooling: Calculates the average value within the receptive field for the output array.
+
+- A feed-forward neural network commonly employed for visual image analysis using grid technology.
+
+- Convolution layers house multiple filters for convolution operations. Each image is treated as a pixel value matrix. Filters slide over the image matrix, computing dot products to generate the convolution feature matrix.
+TRAINING PROCESS
+Image Preprocessing:
+o	Load each image using OpenCV.
+o	Convert the image to RGB colour space.
+o	Resize the image to (128, 128).
+o	Convert the image to a NumPy array.
+Model Architecture:
+ A sequential CNN model is used with the following layers,
+o	Convolutional layer with 32 filters, 3x3 kernel size, and ReLU activation.
+o	Max pooling layer with 2x2 pool size.
+o	Flatten layer to convert the 2D feature map to a 1D vector.
+o	Dense layer with 256 units and ReLU activation.
+o	Dropout layer with 0.1 dropout rate to prevent overfitting.
+o	Dense layer with 512 units and ReLU activation.
+o	Output layer with 5 units and softmax activation for multi-class classification.
+Model Compilation:
+     Model is compiled using the adam sparse categorical crossentropy using accuracy as it parameter
+Model Training:
+o	Dataset is split for training using the train_test_split method from scikit learn in the ratio of 70% training and 30% testing data.
+o	Normalize the training and testing data using tensorflow to scale the pixel values between 0 and 1.
+o	Train the model for about 200 epochs with a validation split 0.1
+
+CRITICAL FINDINGS
+Despite achieving an impressive accuracy of 85% after 200 epochs, the model's performance is likely hindered by the limited size of the dataset, which consists of only 150 images. This small dataset makes it challenging for the model to learn generalizable features, leading to a tendency towards overfitting. To improve the model's performance, it would be helpful to increase the size and diversity of the training dataset, and to experiment with different regularization techniques.
+
